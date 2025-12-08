@@ -305,6 +305,12 @@ SELECT * FROM Customers WHERE CustomerName LIKE 'A%E';
 SELECT DISTINCT c.CustomerID, c.CustomerName
 FROM Customers c JOIN Orders o ON c.CustomerID=o.CustomerID;
 ```
+/
+```sql
+SELECT DISTINCT CustomerID, CustomerName
+FROM Customers
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
+```
 
 15. **Customers with no orders:**
 ```sql
@@ -312,7 +318,12 @@ SELECT c.CustomerID, c.CustomerName
 FROM Customers c LEFT JOIN Orders o ON c.CustomerID=o.CustomerID
 WHERE o.OrderID IS NULL;
 ```
-
+/
+```sql
+SELECT CustomerID, CustomerName
+FROM Customers
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
+```
 16. **Orders in June 1995:**
 ```sql
 SELECT * FROM Orders WHERE OrderDate BETWEEN '1995-06-01' AND '1995-06-30';
