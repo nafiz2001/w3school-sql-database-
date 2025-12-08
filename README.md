@@ -561,8 +561,406 @@ WHERE OrderDate BETWEEN '1995-06-01' AND '1995-06-30';
 You can run them directly in MySQL using the W3Schools Demo Database.
 
 
+------------------------------------------------------------------------------------------------------------------
+------------------------------------------------------------------------------------------------------------------
 
 
+# 📘 SQL Tutorial Practice (W3Schools Demo Database)
+
+This repository contains a **complete SQL Tutorial workbook**.  
+Each topic includes **3 practice questions** (Beginner, Intermediate, Advanced) with queries.
+
+---
+
+## 🔹 SQL HOME / Intro / Syntax
+
+**Beginner:** Show all databases.  
+```sql
+SHOW DATABASES;
+```
+
+**Intermediate:** Select the demo database.  
+```sql
+USE w3schools_demo;
+```
+
+**Advanced:** Show all tables in the demo database.  
+```sql
+SHOW TABLES;
+```
+
+---
+
+## 🔹 SQL SELECT
+
+**Beginner:** Show all customers.  
+```sql
+SELECT * FROM Customers;
+```
+
+**Intermediate:** Show CustomerName and Country only.  
+```sql
+SELECT CustomerName, Country FROM Customers;
+```
+
+**Advanced:** Show top 5 products with ProductName and Price.  
+```sql
+SELECT ProductName, Price FROM Products LIMIT 5;
+```
+
+---
+
+## 🔹 SQL SELECT DISTINCT
+
+**Beginner:** Show all distinct countries from Customers.  
+```sql
+SELECT DISTINCT Country FROM Customers;
+```
+
+**Intermediate:** Show distinct cities from Suppliers.  
+```sql
+SELECT DISTINCT City FROM Suppliers;
+```
+
+**Advanced:** Show distinct EmployeeID values from Orders.  
+```sql
+SELECT DISTINCT EmployeeID FROM Orders;
+```
+
+---
+
+## 🔹 SQL WHERE
+
+**Beginner:** Find customers from Germany.  
+```sql
+SELECT * FROM Customers WHERE Country = 'Germany';
+```
+
+**Intermediate:** Find products cheaper than 20.  
+```sql
+SELECT * FROM Products WHERE Price < 20;
+```
+
+**Advanced:** Find orders placed after OrderID 10300.  
+```sql
+SELECT * FROM Orders WHERE OrderID > 10300;
+```
+
+---
+
+## 🔹 SQL ORDER BY
+
+**Beginner:** Show products sorted by price ascending.  
+```sql
+SELECT * FROM Products ORDER BY Price ASC;
+```
+
+**Intermediate:** Show customers sorted by country, then name.  
+```sql
+SELECT * FROM Customers ORDER BY Country ASC, CustomerName ASC;
+```
+
+**Advanced:** Show top 3 most expensive products.  
+```sql
+SELECT * FROM Products ORDER BY Price DESC LIMIT 3;
+```
+
+---
+
+## 🔹 SQL AND
+
+**Beginner:** Find customers from Brazil AND CustomerID > 40.  
+```sql
+SELECT * FROM Customers WHERE Country='Brazil' AND CustomerID > 40;
+```
+
+**Intermediate:** Find products cheaper than 30 AND in CategoryID = 1.  
+```sql
+SELECT * FROM Products WHERE Price < 30 AND CategoryID = 1;
+```
+
+**Advanced:** Find orders handled by EmployeeID = 5 AND shipped by ShipperID = 3.  
+```sql
+SELECT * FROM Orders WHERE EmployeeID = 5 AND ShipperID = 3;
+```
+
+---
+
+## 🔹 SQL OR
+
+**Beginner:** Find customers from Germany OR Mexico.  
+```sql
+SELECT * FROM Customers WHERE Country='Germany' OR Country='Mexico';
+```
+
+**Intermediate:** Find customers in Berlin OR names starting with G.  
+```sql
+SELECT * FROM Customers WHERE City='Berlin' OR CustomerName LIKE 'G%';
+```
+
+**Advanced:** Find products with Price < 20 OR CategoryID = 2.  
+```sql
+SELECT * FROM Products WHERE Price < 20 OR CategoryID = 2;
+```
+
+---
+
+## 🔹 SQL NOT
+
+**Beginner:** Find customers NOT from Germany.  
+```sql
+SELECT * FROM Customers WHERE NOT Country='Germany';
+```
+
+**Intermediate:** Find products NOT in CategoryID = 1.  
+```sql
+SELECT * FROM Products WHERE NOT CategoryID=1;
+```
+
+**Advanced:** Find orders NOT shipped by ShipperID = 3.  
+```sql
+SELECT * FROM Orders WHERE NOT ShipperID=3;
+```
+
+---
+
+## 🔹 SQL INSERT INTO
+
+**Beginner:** Insert a new customer.  
+```sql
+INSERT INTO Customers (CustomerID, CustomerName, Country)
+VALUES (92, 'Test Customer', 'UK');
+```
+
+**Intermediate:** Insert a new product.  
+```sql
+INSERT INTO Products (ProductID, ProductName, Price, CategoryID)
+VALUES (78, 'Test Product', 25, 1);
+```
+
+**Advanced:** Insert multiple rows into Suppliers.  
+```sql
+INSERT INTO Suppliers (SupplierID, SupplierName, City, Country)
+VALUES (30, 'Supplier A', 'London', 'UK'),
+       (31, 'Supplier B', 'Berlin', 'Germany');
+```
+
+---
+
+## 🔹 SQL NULL Values
+
+**Beginner:** Find customers with NULL PostalCode.  
+```sql
+SELECT * FROM Customers WHERE PostalCode IS NULL;
+```
+
+**Intermediate:** Find suppliers with NULL Fax.  
+```sql
+SELECT * FROM Suppliers WHERE Fax IS NULL;
+```
+
+**Advanced:** Replace NULL PostalCode with 'N/A'.  
+```sql
+SELECT CustomerName, COALESCE(PostalCode, 'N/A') AS PostalCode
+FROM Customers;
+```
+
+---
+
+## 🔹 SQL UPDATE
+
+**Beginner:** Update a customer’s city.  
+```sql
+UPDATE Customers SET City='Berlin' WHERE CustomerID=1;
+```
+
+**Intermediate:** Update product price.  
+```sql
+UPDATE Products SET Price=30 WHERE ProductID=10;
+```
+
+**Advanced:** Increase all product prices in CategoryID=1 by 10%.  
+```sql
+UPDATE Products SET Price = Price * 1.10 WHERE CategoryID=1;
+```
+
+---
+
+## 🔹 SQL DELETE
+
+**Beginner:** Delete a customer from Brazil.  
+```sql
+DELETE FROM Customers WHERE Country='Brazil';
+```
+
+**Intermediate:** Delete a product cheaper than 5.  
+```sql
+DELETE FROM Products WHERE Price < 5;
+```
+
+**Advanced:** Delete orders before 1995.  
+```sql
+DELETE FROM Orders WHERE OrderDate < '1995-01-01';
+```
+
+---
+
+## 🔹 SQL SELECT TOP / LIMIT
+
+**Beginner:** Show first 5 customers.  
+```sql
+SELECT * FROM Customers LIMIT 5;
+```
+
+**Intermediate:** Show top 3 most expensive products.  
+```sql
+SELECT * FROM Products ORDER BY Price DESC LIMIT 3;
+```
+
+**Advanced:** Show top 2 employees by number of orders.  
+```sql
+SELECT EmployeeID, COUNT(OrderID) AS TotalOrders
+FROM Orders
+GROUP BY EmployeeID
+ORDER BY TotalOrders DESC
+LIMIT 2;
+```
+
+---
+
+## 🔹 SQL Aggregate Functions
+
+**Beginner:** Count all customers.  
+```sql
+SELECT COUNT(*) FROM Customers;
+```
+
+**Intermediate:** Find average product price.  
+```sql
+SELECT AVG(Price) FROM Products;
+```
+
+**Advanced:** Find total quantity sold per product.  
+```sql
+SELECT ProductID, SUM(Quantity) AS TotalSold
+FROM OrderDetails
+GROUP BY ProductID;
+```
+
+---
+
+## 🔹 SQL MIN and MAX
+
+**Beginner:** Find cheapest product price.  
+```sql
+SELECT MIN(Price) FROM Products;
+```
+
+**Intermediate:** Find most expensive product price.  
+```sql
+SELECT MAX(Price) FROM Products;
+```
+
+**Advanced:** Find cheapest product per category.  
+```sql
+SELECT CategoryID, MIN(Price) AS Cheapest
+FROM Products
+GROUP BY CategoryID;
+```
+
+---
+
+## 🔹 SQL COUNT
+
+**Beginner:** Count all orders.  
+```sql
+SELECT COUNT(*) FROM Orders;
+```
+
+**Intermediate:** Count customers in Germany.  
+```sql
+SELECT COUNT(*) FROM Customers WHERE Country='Germany';
+```
+
+**Advanced:** Count products per category.  
+```sql
+SELECT CategoryID, COUNT(ProductID) AS TotalProducts
+FROM Products
+GROUP BY CategoryID;
+```
+
+---
+
+## 🔹 SQL SUM
+
+**Beginner:** Total quantity sold.  
+```sql
+SELECT SUM(Quantity) FROM OrderDetails;
+```
+
+**Intermediate:** Total price of all products.  
+```sql
+SELECT SUM(Price) FROM Products;
+```
+
+**Advanced:** Total items per order.  
+```sql
+SELECT OrderID, SUM(Quantity) AS TotalItems
+FROM OrderDetails
+GROUP BY OrderID;
+```
+
+---
+
+## 🔹 SQL AVG
+
+**Beginner:** Average product price.  
+```sql
+SELECT AVG(Price) FROM Products;
+```
+
+**Intermediate:** Average quantity per order.  
+```sql
+SELECT AVG(Quantity) FROM OrderDetails;
+```
+
+**Advanced:** Average price per category.  
+```sql
+SELECT CategoryID, AVG(Price) AS AvgPrice
+FROM Products
+GROUP BY CategoryID;
+```
+
+---
+
+## 🔹 SQL LIKE
+
+**Beginner:** Find customers whose names start with A.  
+```sql
+SELECT * FROM Customers WHERE CustomerName LIKE 'A%';
+```
+
+**Intermediate:** Find customers whose names end with E.  
+```sql
+SELECT * FROM Customers WHERE CustomerName LIKE '%E';
+```
+
+**Advanced:** Find customers whose names start with A and end with E.  
+```sql
+SELECT * FROM Customers WHERE CustomerName LIKE 'A%E';
+```
+
+---
+
+# 🎯 Purpose
+
+- Beginner-friendly SQL practice  
+- Covers all major SQL topics step by step  
+- Each topic includes Beginner, Intermediate, and Advanced queries  
+- Based on the W3Schools Demo Database  
+
+---------------------------------------------------------------------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------------------------------------------------------------
 
 ## 📌 License
 
@@ -573,7 +971,7 @@ Data is based on the W3Schools Demo Database.
 
 
 
-
+--------------------------------------------------------
 
 
 
