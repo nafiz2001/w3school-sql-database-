@@ -33,7 +33,7 @@ It helps beginners practice `SELECT`, `JOIN`, `GROUP BY`, `ORDER BY`, and other 
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/your-username/w3schools-demo-database.git
+   git clone https://github.com/NafizWasiKhan/w3school-sql-database-.git
    ```
 
 2. Import the SQL dump file into MySQL:
