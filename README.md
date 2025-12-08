@@ -528,17 +528,16 @@ SELECT * FROM Customers WHERE CustomerName LIKE 'A%E';
 
 ## 14. Customers who have placed at least one order
 ```sql
-SELECT DISTINCT c.CustomerID, c.CustomerName
-FROM Customers c
-JOIN Orders o ON c.CustomerID = o.CustomerID;
+SELECT DISTINCT CustomerID, CustomerName
+FROM Customers
+WHERE CustomerID IN (SELECT CustomerID FROM Orders);
 ```
 
 ## 15. Customers who have never placed an order
 ```sql
-SELECT c.CustomerID, c.CustomerName
-FROM Customers c
-LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
-WHERE o.OrderID IS NULL;
+SELECT CustomerID, CustomerName
+FROM Customers
+WHERE CustomerID NOT IN (SELECT CustomerID FROM Orders);
 ```
 
 ## 16. Orders placed during June 1995
