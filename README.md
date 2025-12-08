@@ -347,15 +347,236 @@ SELECT * FROM Orders WHERE OrderDate BETWEEN '1995-06-01' AND '1995-06-30';
 - Covers database management, CRUD, filtering, grouping, joins, and scenario queries  
 - Perfect for GitHub projects, tutorials, and self-study  
 
+-------------------------------------------------------------------------------------------------------------
+
+# 📘 Scenario-Based SQL Queries (W3Schools Demo Database)
+
+This section contains **15 practice questions** with their corresponding SQL queries.  
+They are based on the W3Schools Demo Database and are useful for beginners learning SQL.
+
 ---
+
+## 1. Find out the customer who belongs to UK
+```sql
+SELECT * FROM Customers WHERE Country = 'UK';
+```
+
+## 2. Find out the Brazilian customer
+```sql
+SELECT * FROM Customers WHERE Country = 'Brazil';
+```
+
+## 3. List out the Portuguese customer
+```sql
+SELECT * FROM Customers WHERE Country = 'Portugal';
+```
+
+## 4. Identify if there is any Italian customer in database
+```sql
+SELECT * FROM Customers WHERE Country = 'Italy';
+```
+
+## 5. Find out the category of soft drinks
+```sql
+SELECT * FROM Categories WHERE CategoryName = 'Soft drinks';
+```
+
+## 6. Find out the employees whose name start with M
+```sql
+SELECT * FROM Employees WHERE FirstName LIKE 'M%';
+```
+
+## 7. List out the employees whose name ends with A
+```sql
+SELECT * FROM Employees WHERE FirstName LIKE '%A';
+```
+
+## 8. Find out the orders where OrderID is greater than 10300
+```sql
+SELECT * FROM Orders WHERE OrderID > 10300;
+```
+
+## 9. Find out how many orders with placed ProductID
+```sql
+SELECT ProductID, COUNT(OrderID) AS TotalOrders
+FROM OrderDetails
+GROUP BY ProductID;
+```
+
+## 10. Find out all the orders that had a quantity greater than 35
+```sql
+SELECT * FROM OrderDetails WHERE Quantity > 35;
+```
+
+## 11. Find out how many orders were handled by Employee 5
+```sql
+SELECT COUNT(*) AS TotalOrders
+FROM Orders
+WHERE EmployeeID = 5;
+```
+
+## 12. Find all the orders given by a specific customer
+```sql
+SELECT * FROM Orders WHERE CustomerID = 'ALFKI';
+```
+*(Replace `ALFKI` with the actual CustomerID you want to check.)*
+
+## 13. Find out all the orders shipped to Shipper 3
+```sql
+SELECT * FROM Orders WHERE ShipperID = 3;
+```
+
+## 14. Find out all the products where price was below 30
+```sql
+SELECT * FROM Products WHERE Price < 30;
+```
+
+## 15. Find out the supplier who belongs to London
+```sql
+SELECT * FROM Suppliers WHERE City = 'London';
+```
+
+---
+
+## 🎯 Summary
+- **Customers** → Filter by `Country` or `City`  
+- **Employees** → Use `LIKE` for name patterns  
+- **Orders** → Filter by `OrderID`, `EmployeeID`, `CustomerID`, or `ShipperID`  
+- **Products** → Filter by `Price`  
+- **Suppliers** → Filter by `City`  
+- **Categories** → Filter by `CategoryName`  
+- **OrderDetails** → Use `Quantity` or `ProductID` for analysis  
+
+------------------------------------------------------------------------------------------------------------------------
+
+# 📘 Scenario-Based SQL Queries (W3Schools Demo Database)
+
+This section contains **16 practice questions** with their corresponding SQL queries.  
+They are based on the W3Schools Demo Database and are useful for beginners learning SQL.
+
+---
+
+## 1. View full profile of a customer (CustomerID = 1)
+```sql
+SELECT * FROM Customers WHERE CustomerID = 1;
+```
+
+## 2. Review all products starting with the most expensive
+```sql
+SELECT * FROM Products ORDER BY Price DESC;
+```
+
+## 3. Organize customers by country (A→Z), names (Z→A)
+```sql
+SELECT * FROM Customers ORDER BY Country ASC, CustomerName DESC;
+```
+
+## 4. Customers from Brazil with ID > 40
+```sql
+SELECT * FROM Customers WHERE Country = 'Brazil' AND CustomerID > 40;
+```
+
+## 5. Customers in Berlin OR names start with G OR based in Germany
+```sql
+SELECT * FROM Customers
+WHERE City = 'Berlin' OR CustomerName LIKE 'G%' OR Country = 'Germany';
+```
+
+## 6. Top 3 customers whose names appear last alphabetically
+```sql
+SELECT * FROM Customers ORDER BY CustomerName DESC LIMIT 3;
+```
+
+## 7. Cheapest item in each product category
+```sql
+SELECT CategoryID, MIN(Price) AS CheapestPrice
+FROM Products
+GROUP BY CategoryID;
+```
+
+## 8. Total number of products in the database
+```sql
+SELECT COUNT(*) AS TotalProducts FROM Products;
+```
+
+## 9. Number of products per category
+```sql
+SELECT CategoryID, COUNT(ProductID) AS TotalProducts
+FROM Products
+GROUP BY CategoryID;
+```
+
+## 10. Total items per order
+```sql
+SELECT OrderID, SUM(Quantity) AS TotalItems
+FROM OrderDetails
+GROUP BY OrderID;
+```
+
+## 11. Average price of products per category
+```sql
+SELECT CategoryID, AVG(Price) AS AvgPrice
+FROM Products
+GROUP BY CategoryID;
+```
+
+## 12. Customers whose names begin with N or L
+```sql
+SELECT * FROM Customers
+WHERE CustomerName LIKE 'N%' OR CustomerName LIKE 'L%';
+```
+
+## 13. Customers whose names start with A and end with E
+```sql
+SELECT * FROM Customers WHERE CustomerName LIKE 'A%E';
+```
+
+## 14. Customers who have placed at least one order
+```sql
+SELECT DISTINCT c.CustomerID, c.CustomerName
+FROM Customers c
+JOIN Orders o ON c.CustomerID = o.CustomerID;
+```
+
+## 15. Customers who have never placed an order
+```sql
+SELECT c.CustomerID, c.CustomerName
+FROM Customers c
+LEFT JOIN Orders o ON c.CustomerID = o.CustomerID
+WHERE o.OrderID IS NULL;
+```
+
+## 16. Orders placed during June 1995
+```sql
+SELECT * FROM Orders
+WHERE OrderDate BETWEEN '1995-06-01' AND '1995-06-30';
+```
+
+---
+
+## 🎯 Summary
+- **Customers** → Filter by `Country`, `City`, or name patterns  
+- **Products** → Filter by `Price`, group by `CategoryID`  
+- **Orders** → Filter by `OrderID`, `CustomerID`, `EmployeeID`, `ShipperID`, or `OrderDate`  
+- **OrderDetails** → Use `Quantity` or `ProductID` for analysis  
+- **Suppliers** → Filter by `City`  
+- **Categories** → Filter by `CategoryName`  
+
+---
+
+📌 These queries are designed for **practice and learning**.  
+You can run them directly in MySQL using the W3Schools Demo Database.
+
+
+📌 These queries are designed for **practice and learning**.  
+You can run them directly in MySQL using the W3Schools Demo Database.
+
 
 ## 📌 License
 
 This project is for **educational purposes only**.  
 Data is based on the W3Schools Demo Database.
-```
 
----
 
 
 
