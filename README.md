@@ -79,13 +79,6 @@ SELECT * FROM Orders WHERE ShipperID = 3;
 
 --------------------------------------------------------------------------------------------------------------
 
-Got it Nafiz 👍 — from now on I’ll keep everything in **English only**.  
-
-Here’s a polished **README.md template** for your MySQL notes and W3Schools Demo Database practice. It’s structured, professional, and easy for anyone to follow:
-
----
-
-```markdown
 # 📘 MySQL Complete Notes (Beginner to Advanced)
 
 This repository contains a **step-by-step MySQL Cheat Sheet**.  
@@ -568,8 +561,7 @@ WHERE OrderDate BETWEEN '1995-06-01' AND '1995-06-30';
 You can run them directly in MySQL using the W3Schools Demo Database.
 
 
-📌 These queries are designed for **practice and learning**.  
-You can run them directly in MySQL using the W3Schools Demo Database.
+
 
 
 ## 📌 License
